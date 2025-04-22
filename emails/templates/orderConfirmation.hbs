@@ -1,0 +1,33 @@
+{{> header title=(concat "Order #" order.orderNumber)}}
+
+<p>Hello {{name}},</p>
+<p>Thank you for your order! Here are your order details:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each order.items}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.quantity}}</td>
+      <td>{{formatPrice this.price}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"><strong>Total:</strong></td>
+      <td><strong>{{formatPrice order.total}}</strong></td>
+    </tr>
+  </tfoot>
+</table>
+
+<p>We'll notify you when your order ships.</p>
+
+{{> footer}}
